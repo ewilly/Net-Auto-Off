@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Net-Auto-Off</string>
+    <string name="title_section1">Auto Off</string>
+    <string name="title_section2">APN User Settings</string>
+
+    <string name="permissionError">Error: on Android 4.0 and above, this app needs to be converted to a system app. Root your device, then use /system/app mover or similar.</string>
+
+    <string name="advanced_apn_settings">Advanced APN Settings</string>
+    <string name="advanced_wifi_settings">Advanced WiFi Settings</string>
+    <string name="settings_not_found_">Settings not found!</string>
+    <string name="about">About</string>
+    <string name="about_title">About</string>
+    <string name="about_text_intro">Hello. Thank you for using this App. My name is Sylvain Arnould (ewilly) and I have written this App for fun and in my spare time. Its also Open Source, so you can grab the Source Code and modify it as you want.\n<b>https://github.com/ewilly/Net-Auto-Off</b></string>
+    <string name="about_text_legal">Thanks to Bence Béky (https://github.com/bencebeky/MMSKeeper).\nThanks to Thomas Hoffmann (https://github.com/j4velin/WiFi-Auto-Off).\n\nThis App is licensed under the Apache license. A copy of this can be downloaded here:\n<b>http://www.apache.org/licenses/LICENSE-2.0</b></string>
+
+    <string name="auto_off">Enable or disable auto off for all receiver &#8230;</string>
+    <string name="auto_off_off">DISABLE</string>
+    <string name="auto_off_on">ENABLE</string>
+    <string name="turn_wifi_off_when">Turn WiFi off when&#8230;</string>
+    <string name="screen_is_off_wifi">screen is off</string>
+    <string name="turn_data_off_when">Turn Data off when&#8230;</string>
+    <string name="screen_is_off_data_off">screen is off</string>
+    <string name="turn_data_to_mms_when">Turn Data to MMS only when (see APN user settings) &#8230;</string>
+    <string name="screen_is_off_data_mms">screen is off</string>
+
+    <string name="for_at_least">for at least %d min</string>
+    <string name="sleep_policy">Your WiFi sleep policy is set to automatically disable WiFi as soon as the display goes off. You can change the policy in the Android \'Advanced WiFi settings\'</string>
+    <string name="adv_wifi_settings">Adv. WiFi settings</string>
+    <string name="minutes_before_turning_off_wifi">Minutes before turning off WiFi:</string>
+    <string name="minutes_before_turning_off_data_off">Minutes before turning off Data:</string>
+    <string name="minutes_before_turning_off_data_mms">Minutes before turning Data to MMS only:</string>
+
+    <string name="apn_data_to_default">APN TYPE when data is on (e.g. default,supl,mms):</string>
+    <string name="apn_data_to_mms">APN TYPE when data is on MMS only (e.g. mms):</string>
+    <string name="apn_data_to_default_value">default,supl,mms</string>
+    <string name="apn_data_to_mms_value">mms</string>
+
+    <string name="on_off">Enable or disable &#8230;</string>
+    <string name="wifi_on_off_switch_title">WI-FI :</string>
+    <string name="wifi_on_off_switch_on">ENABLE</string>
+    <string name="wifi_on_off_switch_off">DISABLE</string>
+    <string name="data_on_off_switch_title">DATA :</string>
+    <string name="data_on_off_switch_on">ENABLE</string>
+    <string name="data_on_off_switch_off">DISABLE</string>
+
+    <string name="apn_type">Force APN TYPE when data is on &#8230;</string>
+    <string name="apn_type_switch_title">current APN type is :</string>
+    <string name="apn_type_switch_default_value">ALL</string>
+    <string name="apn_type_switch_mms_value">MMS</string>
+
+</resources>

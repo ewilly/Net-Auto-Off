@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/auto_off">
+        <SwitchPreference
+            android:key="auto_off"
+            android:switchTextOff="@string/auto_off_off"
+            android:switchTextOn="@string/auto_off_on"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/turn_wifi_off_when">
+        <CheckBoxPreference
+            android:key="screen_off_wifi"
+            android:title="@string/screen_is_off_wifi"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/turn_data_off_when">
+        <CheckBoxPreference
+            android:key="screen_off_data_off"
+            android:title="@string/screen_is_off_data_off"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/turn_data_to_mms_when">
+        <CheckBoxPreference
+            android:key="screen_off_data_mms"
+            android:title="@string/screen_is_off_data_mms"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

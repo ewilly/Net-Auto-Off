@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/on_off">
+        <SwitchPreference
+            android:key="wifi_on_off"
+            android:title="@string/wifi_on_off_switch_title"
+            android:switchTextOff="@string/wifi_on_off_switch_off"
+            android:switchTextOn="@string/wifi_on_off_switch_on" />
+        <SwitchPreference
+            android:key="data_on_off"
+            android:title="@string/data_on_off_switch_title"
+            android:switchTextOff="@string/data_on_off_switch_off"
+            android:switchTextOn="@string/data_on_off_switch_on" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/apn_type">
+        <SwitchPreference
+            android:key="apn_data"
+            android:switchTextOff="@string/apn_type_switch_mms_value"
+            android:switchTextOn="@string/apn_type_switch_default_value"
+            android:title="@string/apn_type_switch_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/apn_data_to_mms">
+        <EditTextPreference
+            android:defaultValue="@string/apn_data_to_mms_value"
+            android:inputType="textNoSuggestions"
+            android:key="apn_data_to_mms_value"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/apn_data_to_default">
+        <EditTextPreference
+            android:defaultValue="@string/apn_data_to_default_value"
+            android:inputType="textNoSuggestions"
+            android:key="apn_data_to_default_value"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

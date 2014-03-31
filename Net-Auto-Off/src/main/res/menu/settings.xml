@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="fr.ewilly.NetAutoOff.Activity_Main" >
+    
+    <item android:id="@+id/action_apn_adv"
+        android:title="@string/advanced_apn_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_wifi_adv"
+        android:title="@string/advanced_wifi_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"/>
+
+    <item
+        android:id="@+id/about"
+        android:title="@string/about"
+        android:orderInCategory="100"
+        android:showAsAction="never"/>
+</menu>
