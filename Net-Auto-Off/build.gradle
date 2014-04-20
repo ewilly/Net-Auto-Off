@@ -5,12 +5,8 @@ android {
     buildToolsVersion "19.0.3"
 
     defaultConfig {
-        minSdkVersion -1
-        targetSdkVersion -1
-        //versionCode 1
-        //versionName "1.0"
     }
-    
+
     buildTypes {
         release {
             runProguard false
@@ -20,6 +16,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v13:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v13:+'
+    compile 'com.android.support:support-v4:+'
 }

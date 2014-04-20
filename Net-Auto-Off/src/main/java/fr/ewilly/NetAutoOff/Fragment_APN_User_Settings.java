@@ -45,58 +45,58 @@ public class Fragment_APN_User_Settings extends PreferenceFragment {
         assert apn_data_to_default_value != null;
 
         // Wifi Switch
-            // Get initial state
-            updateCurrent_wifi(wifi_on_off);
-            // Get state
-            wifi_on_off.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @SuppressLint("StringFormatMatches")
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if ((Boolean) newValue) {
-                        Receiver.Change_WiFi(mActivity, "on");
-                    } else {
-                        Receiver.Change_WiFi(mActivity, "off");
-                    }
-                    return true;
+        // Get initial state
+        updateCurrent_wifi(wifi_on_off);
+        // Get state
+        wifi_on_off.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @SuppressLint("StringFormatMatches")
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ((Boolean) newValue) {
+                    Receiver.Change_WiFi(mActivity, "on");
+                } else {
+                    Receiver.Change_WiFi(mActivity, "off");
                 }
-            });
+                return true;
+            }
+        });
 
         // Data Switch
-            // Get initial state
-            updateCurrent_data(data_on_off);
-            // Get state
-            data_on_off.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @SuppressLint("StringFormatMatches")
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    if ((Boolean) newValue) {
-                        Receiver.Change_Data(mActivity, "on");
-                    } else {
-                        Receiver.Change_Data(mActivity, "off");
-                    }
-                    return true;
+        // Get initial state
+        updateCurrent_data(data_on_off);
+        // Get state
+        data_on_off.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @SuppressLint("StringFormatMatches")
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ((Boolean) newValue) {
+                    Receiver.Change_Data(mActivity, "on");
+                } else {
+                    Receiver.Change_Data(mActivity, "off");
                 }
-            });
+                return true;
+            }
+        });
 
         // APN Switch
-            apn_data.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @SuppressLint("StringFormatMatches")
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    Integer defaultId = ChangeAPN.getDefaultId(mActivity);
-                    String newType;
-                    if ((Boolean) newValue) {
-                        newType = prefs.getString("apn_data_to_default_value", mActivity.getString(R.string.apn_data_to_default_value));
-                        ChangeAPN.setData(mActivity, defaultId, newType);
-                    } else {
-                        newType = prefs.getString("apn_data_to_mms_value", mActivity.getString(R.string.apn_data_to_mms_value));
-                        ChangeAPN.setData(mActivity, defaultId, newType);
-                    }
-                    defaultId = ChangeAPN.getDefaultId(mActivity);
-                    updateCurrent_apn(mActivity, defaultId);
-                    return true;
+        apn_data.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @SuppressLint("StringFormatMatches")
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Integer defaultId = ChangeAPN.getDefaultId(mActivity);
+                String newType;
+                if ((Boolean) newValue) {
+                    newType = prefs.getString("apn_data_to_default_value", mActivity.getString(R.string.apn_data_to_default_value));
+                    ChangeAPN.setData(mActivity, defaultId, newType);
+                } else {
+                    newType = prefs.getString("apn_data_to_mms_value", mActivity.getString(R.string.apn_data_to_mms_value));
+                    ChangeAPN.setData(mActivity, defaultId, newType);
                 }
-            });
+                defaultId = ChangeAPN.getDefaultId(mActivity);
+                updateCurrent_apn(mActivity, defaultId);
+                return true;
+            }
+        });
 
         // APN text box for mms type
         apn_data_to_mms_value.setSummary(apn_data_to_mms_value.getText());
@@ -152,10 +152,8 @@ public class Fragment_APN_User_Settings extends PreferenceFragment {
     /**
      * Update the current APN value
      *
-     * @param context
-     *          the context
-     * @param defaultId
-     *          the current APN Id
+     * @param context   the context
+     * @param defaultId the current APN Id
      */
     public void updateCurrent_apn(Context context, Integer defaultId) {
         SwitchPreference apn_data = (SwitchPreference) findPreference("apn_data");
@@ -183,14 +181,13 @@ public class Fragment_APN_User_Settings extends PreferenceFragment {
     /**
      * Update the current Wi-Fi state
      *
-     * @param key
-     *          the key
+     * @param key the key
      */
 
-    public void updateCurrent_wifi(SwitchPreference key){
-        if  (isAdded ()) {
+    public void updateCurrent_wifi(SwitchPreference key) {
+        if (isAdded()) {
             WifiManager wifi = (WifiManager) mActivity.getSystemService(Context.WIFI_SERVICE);
-            if (wifi.isWifiEnabled()){
+            if (wifi.isWifiEnabled()) {
                 key.setChecked(true);
             } else {
                 key.setChecked(false);
@@ -201,8 +198,7 @@ public class Fragment_APN_User_Settings extends PreferenceFragment {
     /**
      * Update the current Data state
      *
-     * @param key
-     *          the key
+     * @param key the key
      */
     public void updateCurrent_data(SwitchPreference key) {
         if (Receiver.Is_Data_Enabled(mActivity)) {

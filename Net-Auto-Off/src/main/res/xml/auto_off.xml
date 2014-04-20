@@ -4,31 +4,31 @@
 
     <PreferenceCategory android:title="@string/auto_off">
         <SwitchPreference
+            android:defaultValue="false"
             android:key="auto_off"
             android:switchTextOff="@string/auto_off_off"
-            android:switchTextOn="@string/auto_off_on"
-            android:defaultValue="false"/>
+            android:switchTextOn="@string/auto_off_on" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/turn_wifi_off_when">
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="screen_off_wifi"
-            android:title="@string/screen_is_off_wifi"
-            android:defaultValue="false"/>
+            android:title="@string/screen_is_off_wifi" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/turn_data_off_when">
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="screen_off_data_off"
-            android:title="@string/screen_is_off_data_off"
-            android:defaultValue="false"/>
+            android:title="@string/screen_is_off_data_off" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/turn_data_to_mms_when">
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="screen_off_data_mms"
-            android:title="@string/screen_is_off_data_mms"
-            android:defaultValue="false"/>
+            android:title="@string/screen_is_off_data_mms" />
     </PreferenceCategory>
 
 </PreferenceScreen>

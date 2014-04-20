@@ -5,14 +5,14 @@
     <PreferenceCategory android:title="@string/on_off">
         <SwitchPreference
             android:key="wifi_on_off"
-            android:title="@string/wifi_on_off_switch_title"
             android:switchTextOff="@string/wifi_on_off_switch_off"
-            android:switchTextOn="@string/wifi_on_off_switch_on" />
+            android:switchTextOn="@string/wifi_on_off_switch_on"
+            android:title="@string/wifi_on_off_switch_title" />
         <SwitchPreference
             android:key="data_on_off"
-            android:title="@string/data_on_off_switch_title"
             android:switchTextOff="@string/data_on_off_switch_off"
-            android:switchTextOn="@string/data_on_off_switch_on" />
+            android:switchTextOn="@string/data_on_off_switch_on"
+            android:title="@string/data_on_off_switch_title" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/apn_type">
@@ -27,14 +27,14 @@
         <EditTextPreference
             android:defaultValue="@string/apn_data_to_mms_value"
             android:inputType="textNoSuggestions"
-            android:key="apn_data_to_mms_value"/>
+            android:key="apn_data_to_mms_value" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/apn_data_to_default">
         <EditTextPreference
             android:defaultValue="@string/apn_data_to_default_value"
             android:inputType="textNoSuggestions"
-            android:key="apn_data_to_default_value"/>
+            android:key="apn_data_to_default_value" />
     </PreferenceCategory>
 
 </PreferenceScreen>

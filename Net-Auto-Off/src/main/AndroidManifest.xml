@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="fr.ewilly.NetAutoOff"
     android:installLocation="internalOnly"
-    android:versionCode="7"
-    android:versionName="3.3">
+    android:versionCode="8"
+    android:versionName="3.4">
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -15,24 +15,27 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_APN_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".Activity_Main"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <receiver android:name=".Receiver" >
+        <receiver
+            android:name=".Receiver"
+            android:process=":background">
             <intent-filter>
                 <action android:name="android.net.wifi.STATE_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
@@ -43,10 +46,12 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".ScreenOffDetector" >
+        <service
+            android:name=".ScreenChangeDetector"
+            android:process=":background">
         </service>
 
-        <receiver android:name=".StartReceiver" >
+        <receiver android:name=".StartReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />

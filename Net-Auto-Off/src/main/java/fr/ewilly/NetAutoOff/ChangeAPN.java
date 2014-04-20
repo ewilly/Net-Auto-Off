@@ -27,7 +27,6 @@ import android.widget.Toast;
 
 /**
  * Class for APN configuration.
- *
  */
 public class ChangeAPN extends ContextThemeWrapper {
     public static final Uri APN_TABLE_URI = Uri.parse("content://telephony/carriers");
@@ -37,8 +36,7 @@ public class ChangeAPN extends ContextThemeWrapper {
     /**
      * Read preferred table to find _id of default APN
      *
-     * @param context
-     *          the context
+     * @param context the context
      */
     public static Integer getDefaultId(Context context) {
         Cursor c;
@@ -66,8 +64,7 @@ public class ChangeAPN extends ContextThemeWrapper {
     /**
      * Read current type from database
      *
-     * @param context
-     *          the context
+     * @param context the context
      */
     public static String getType(Context context, Integer defaultId) {
         if (defaultId == -1)
@@ -94,12 +91,10 @@ public class ChangeAPN extends ContextThemeWrapper {
 
     /**
      * Turn data on or off or to mms
-     *  @param context
-     *          the context
-     * @param defaultId
-     *          the preferred table to find _id of default APN
-     * @param newType
-     *          the new APN type
+     *
+     * @param context   the context
+     * @param defaultId the preferred table to find _id of default APN
+     * @param newType   the new APN type
      */
     public static void setData(Context context, Integer defaultId, String newType) {
         if (defaultId == -1) {

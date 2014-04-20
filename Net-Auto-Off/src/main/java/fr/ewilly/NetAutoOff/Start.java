@@ -27,20 +27,19 @@ import android.util.Log;
  * Utility class to set all necessary timers / start the background service
  */
 public class Start {
-	/**
-	 * Sets all necessary timers / starts the background service depending on the user settings
-	 * 
-	 * @param context
-	 *            the context
-	 */
-	static void start(Context context) {
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		if (prefs.getBoolean("screen_off_wifi", true) || prefs.getBoolean("screen_off_data_off", true) || prefs.getBoolean("screen_off_data_sms", true)) {
-            if (Receiver.LOG) Log.d(Receiver.LOG_TAG, "start service ScreenOffDetector");
-            context.startService(new Intent(context, ScreenOffDetector.class));
-		} else {
-            if (Receiver.LOG) Log.d(Receiver.LOG_TAG, "stop service ScreenOffDetector");
-            context.stopService(new Intent(context, ScreenOffDetector.class));
-		}
-	}
+    /**
+     * Sets all necessary timers / starts the background service depending on the user settings
+     *
+     * @param context the context
+     */
+    static void start(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (prefs.getBoolean("screen_off_wifi", true) || prefs.getBoolean("screen_off_data_off", true) || prefs.getBoolean("screen_off_data_sms", true)) {
+            if (Receiver.LOG) Log.d(Receiver.LOG_TAG, "start service ScreenChangeDetector");
+            context.startService(new Intent(context, ScreenChangeDetector.class));
+        } else {
+            if (Receiver.LOG) Log.d(Receiver.LOG_TAG, "stop service ScreenChangeDetector");
+            context.stopService(new Intent(context, ScreenChangeDetector.class));
+        }
+    }
 }

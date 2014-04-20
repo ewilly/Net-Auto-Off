@@ -71,7 +71,8 @@ public class Activity_Main extends Activity implements ActionBar.TabListener {
             actionBar.addTab(
                     actionBar.newTab()
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
+                            .setTabListener(this)
+            );
         }
 
         // Read the default values

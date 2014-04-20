@@ -23,6 +23,67 @@ public class Fragment_Auto_Off extends PreferenceFragment {
 
     Activity mActivity;
 
+    /**
+     * Checks if the WiFi sleep policy will keep WiFi when the screen goes off
+     *
+     * @param context the context
+     * @return true if WiFi will be kept on during sleep
+     */
+    private static boolean keepWiFiOn(Context context) {
+        try {
+            return ((sleepPolicySetToNever(context)) || (Settings.Global.WIFI_SLEEP_POLICY_NEVER == Settings.Global.getInt(
+                    context.getContentResolver(), Settings.Global.WIFI_SLEEP_POLICY)));
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * Set the Wifi sleep policy to never
+     *
+     * @param context the context
+     */
+    private static boolean sleepPolicySetToNever(final Context context) throws Settings.SettingNotFoundException {
+        return Settings.Global.WIFI_SLEEP_POLICY_NEVER == Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.WIFI_SLEEP_POLICY);
+    }
+
+    /**
+     * Choose the timeout
+     *
+     * @param context     the context
+     * @param prefs       the SharedPreferences
+     * @param p           the key
+     * @param summary     the summary of the dialogue box
+     * @param min         the minimal timeout
+     * @param max         the maximal timeout
+     * @param title       the title of the dialogue box
+     * @param setting     the setting
+     * @param def         the timeout to update
+     * @param changeTitle if true the selected value will be wrote in the title otherwise in the summary
+     */
+    private static void showNumberPicker(final Context context, final SharedPreferences prefs, final Preference p, final int summary,
+                                         final int min, final int max, final String title, final String setting, final int def, final boolean changeTitle) {
+        final NumberPicker np = new NumberPicker(context);
+        np.setMinValue(min);
+        np.setMaxValue(max);
+        np.setValue(prefs.getInt(setting, def));
+        new AlertDialog.Builder(context).setTitle(title).setView(np).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                np.clearFocus();
+                prefs.edit().putInt(setting, np.getValue()).apply();
+                if (changeTitle)
+                    // Update title
+                    p.setTitle(context.getString(summary, np.getValue()));
+                else
+                    // Update summary
+                    p.setSummary(context.getString(summary, np.getValue()));
+            }
+        }).create().show();
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -69,12 +130,12 @@ public class Fragment_Auto_Off extends PreferenceFragment {
                 }
                 if (!is_checked) {
                     if (Receiver.LOG) Log.d(Receiver.LOG_TAG, "stopping service");
-                    mActivity.stopService(new Intent(mActivity, ScreenOffDetector.class));
+                    mActivity.stopService(new Intent(mActivity, ScreenChangeDetector.class));
                 } else {
                     if (Receiver.LOG) Log.d(Receiver.LOG_TAG, "starting service");
-                    mActivity.startService(new Intent(mActivity, ScreenOffDetector.class));
+                    mActivity.startService(new Intent(mActivity, ScreenChangeDetector.class));
                     getPackageManager().setComponentEnabledSetting(
-                            new ComponentName(mActivity, ScreenOffDetector.class),
+                            new ComponentName(mActivity, ScreenChangeDetector.class),
                             PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP
                     );
                 }
@@ -159,79 +220,6 @@ public class Fragment_Auto_Off extends PreferenceFragment {
     public void onPause() {
         super.onPause();
         Start.start(mActivity);
-    }
-
-    /**
-     * Checks if the WiFi sleep policy will keep WiFi when the screen goes off
-     *
-     * @param context
-     *          the context
-     * @return true if WiFi will be kept on during sleep
-     */
-    private static boolean keepWiFiOn(Context context) {
-        try {
-            return ((sleepPolicySetToNever(context)) || (Settings.Global.WIFI_SLEEP_POLICY_NEVER == Settings.Global.getInt(
-                    context.getContentResolver(), Settings.Global.WIFI_SLEEP_POLICY)));
-        } catch (Settings.SettingNotFoundException e) {
-            e.printStackTrace();
-        }
-        return true;
-    }
-
-    /**
-     * Set the Wifi sleep policy to never
-     *
-     * @param context
-     *          the context
-     */
-    private static boolean sleepPolicySetToNever(final Context context) throws Settings.SettingNotFoundException {
-        return Settings.Global.WIFI_SLEEP_POLICY_NEVER == Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.WIFI_SLEEP_POLICY);
-    }
-
-    /**
-     * Choose the timeout
-     *
-     * @param context
-     *          the context
-     * @param prefs
-     *          the SharedPreferences
-     * @param p
-     *          the key
-     * @param summary
-     *          the summary of the dialogue box
-     * @param min
-     *          the minimal timeout
-     * @param max
-     *          the maximal timeout
-     * @param title
-     *          the title of the dialogue box
-     * @param setting
-     *          the setting
-     * @param def
-     *          the timeout to update
-     * @param changeTitle
-     *          if true the selected value will be wrote in the title otherwise in the summary
-     */
-    private static void showNumberPicker(final Context context, final SharedPreferences prefs, final Preference p, final int summary,
-                                         final int min, final int max, final String title, final String setting, final int def, final boolean changeTitle) {
-        final NumberPicker np = new NumberPicker(context);
-        np.setMinValue(min);
-        np.setMaxValue(max);
-        np.setValue(prefs.getInt(setting, def));
-        new AlertDialog.Builder(context).setTitle(title).setView(np).setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                np.clearFocus();
-                prefs.edit().putInt(setting, np.getValue()).apply();
-                if (changeTitle)
-                    // Update title
-                    p.setTitle(context.getString(summary, np.getValue()));
-                else
-                    // Update summary
-                    p.setSummary(context.getString(summary, np.getValue()));
-            }
-        }).create().show();
     }
 
     /**
