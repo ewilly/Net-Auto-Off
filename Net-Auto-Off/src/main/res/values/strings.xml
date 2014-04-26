@@ -13,7 +13,12 @@
     <string name="about">About</string>
     <string name="about_title">About</string>
     <string name="about_text_intro">Hello. Thank you for using this App. My name is Sylvain Arnould (ewilly) and I have written this App for fun and in my spare time. Its also Open Source, so you can grab the Source Code and modify it as you want.\n<b>https://github.com/ewilly/Net-Auto-Off</b></string>
-    <string name="about_text_legal">Thanks to Bence Béky (https://github.com/bencebeky/MMSKeeper).\nThanks to Thomas Hoffmann (https://github.com/j4velin/WiFi-Auto-Off).\n\nThis App is licensed under the Apache license. A copy of this can be downloaded here:\n<b>http://www.apache.org/licenses/LICENSE-2.0</b></string>
+    <string name="about_text_version_title">App Version</string>
+    <string name="about_text_version">v%1$s</string>
+    <string name="about_text_thanks_title">Acknowledgement</string>
+    <string name="about_text_thanks">Thanks to Bence Béky (https://github.com/bencebeky/MMSKeeper).\nThanks to Thomas Hoffmann (https://github.com/j4velin/WiFi-Auto-Off).</string>
+    <string name="about_text_legal_title">Legal information</string>
+    <string name="about_text_legal">This App is licensed under the Apache license. A copy of this can be downloaded here:\n<b>http://www.apache.org/licenses/LICENSE-2.0</b></string>
 
     <string name="auto_off">Enable or disable auto off for all receiver &#8230;</string>
     <string name="auto_off_off">DISABLE</string>

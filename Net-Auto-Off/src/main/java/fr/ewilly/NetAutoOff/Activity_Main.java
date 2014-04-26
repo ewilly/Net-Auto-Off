@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -14,6 +16,7 @@ import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -110,10 +113,20 @@ public class Activity_Main extends Activity implements ActionBar.TabListener {
             return true;
         }
         if (id == R.id.about) {
+            // Show the dialog box
             Dialog box = new Dialog(this);
             box.setContentView(R.layout.about);
             box.setTitle(R.string.about_title);
             box.show();
+            // Change the app version
+            TextView t = (TextView) box.findViewById(R.id.version);
+            PackageInfo pkg;
+            try {
+                pkg = getPackageManager().getPackageInfo(getPackageName(), 0);
+                t.setText(String.format(getString(R.string.about_text_version), pkg.versionName));
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
